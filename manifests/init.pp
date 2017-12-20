@@ -38,8 +38,8 @@
 class wordpress {
 
 include wordpress::install
-include wordpress::dbconfig
 include wordpress::service
+include wordpress::dbconfig
 include wordpress::web
 }
-}
+

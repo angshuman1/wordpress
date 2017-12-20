@@ -1,4 +1,4 @@
-class wordpress::config inherits wordpress {
+class wordpress::dbconfig inherits wordpress {
 exec { "setuprootpassword" :
                        command => "mysqladmin -u root password abcd1234 && touch /tmp/file1",
                        path => "/usr/bin",
