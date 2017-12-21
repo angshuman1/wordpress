@@ -26,7 +26,8 @@ exec { "configurewordpress" :
 }
 ->
 exec { "service apache2 restart" :        
-                           path => "/usr/bin"}
+                           path => "/usr/bin"
+}
 file {"/var/www/html/index.html": 
-                            ensure => absent }
+                            ensure => absent
 }
