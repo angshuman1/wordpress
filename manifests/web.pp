@@ -20,6 +20,7 @@ exec { "copywordpress" :
                   creates => "/tmp/file6",
                   require => Exec['unzipwordpress'],
 }
+<<<<<<< HEAD
 
 #exec { "configurewordpress" :
 #               command => "wget https://raw.githubusercontent.com/roybhaskar9/chefwordpress-1/master/wordpress/files/default/wp-config-sample.php -O wp-config.php && touch /tmp/file7",
@@ -33,6 +34,20 @@ file { "/etc/wp-config.php" : source => "puppet///modules/wordpress/wp-config.ph
 file  { "/var/www/html/index.html" :
                             ensure => absent,
                             require => Service['apache2'],
+=======
+exec { "configurewordpress" :
+               command => "wget https://raw.githubusercontent.com/roybhaskar9/chefwordpress-1/master/wordpress/files/default/wp-config-sample.php -O wp-config.php && touch /tmp/file7",
+               path => "/usr/bin",
+               cwd => "/var/www/html",
+               require => Exec['copywordpress'],
+}
+->
+exec { "service apache2 restart" :        
+                           path => "/usr/bin"
+}
+file {"/var/www/html/index.html": 
+                            ensure => absent
+>>>>>>> 5cdbcb6a91f6fa37fb58fe66f0deebd3d57226b8
 }
 exec { "service apache2 restart" :
                      require => Exec['configurewordpress'],
