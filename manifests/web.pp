@@ -24,9 +24,9 @@ exec { "configurewordpress" :
                cwd => "/var/www/html",
                require => Exec['copywordpress'],
                ->
-               exec { "service apache2 restart" :        
+exec { "service apache2 restart" :        
                            path => "/usr/bin"}
-               file {"/var/www/html/index.html": 
+file {"/var/www/html/index.html": 
                             ensure => absent }
 }
 }
